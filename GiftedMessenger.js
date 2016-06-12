@@ -209,6 +209,8 @@ class GiftedMessenger extends Component {
       this.props.onCustomSend(message);
     } else {
       this.onChangeText('');
+      // clear text by setting native props
+      this.refs._textInput.setNativeProps({text: ""});
       this.props.handleSend(message);
     }
   }
@@ -575,7 +577,6 @@ class GiftedMessenger extends Component {
             placeholder={this.props.placeholder}
             placeholderTextColor={this.props.placeholderTextColor}
             onChangeText={this.onChangeText}
-            value={this.state.text}
             autoFocus={this.props.autoFocus}
             returnKeyType={this.props.submitOnReturn ? 'send' : 'default'}
             onSubmitEditing={this.props.submitOnReturn ? this.onSend : () => {}}
